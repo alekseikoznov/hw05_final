@@ -43,7 +43,7 @@ class PostFormTests(TestCase):
 
     def test_create_post(self):
         """Валидная форма создает запись в Post."""
-        TEXT_OF_POST = 'Другой тестовый пост' 
+        TEXT_OF_POST = 'Другой тестовый пост'
         post_count = Post.objects.count()
         small_gif = (
             b'\x47\x49\x46\x38\x39\x61\x02\x00'
@@ -59,7 +59,7 @@ class PostFormTests(TestCase):
             content_type='image/gif'
         )
         form_data = {
-            'text':  TEXT_OF_POST,
+            'text': TEXT_OF_POST,
             'group': PostFormTests.group.pk,
             'author': PostFormTests.user.username,
             'image': uploaded
@@ -69,9 +69,9 @@ class PostFormTests(TestCase):
             data=form_data,
             follow=True
         )
-        created_post = Post.objects.first() 
-        self.assertEqual(created_post.text, form_data['text']) 
-        self.assertEqual(created_post.group.pk, form_data['group']) 
+        created_post = Post.objects.first()
+        self.assertEqual(created_post.text, form_data['text'])
+        self.assertEqual(created_post.group.pk, form_data['group'])
         self.assertEqual(created_post.author.username, form_data['author'])
         self.assertRedirects(response, reverse(
             'posts:profile', kwargs={'username': PostFormTests.user.username}))
@@ -84,7 +84,7 @@ class PostFormTests(TestCase):
 
     def test_edit_post(self):
         """Валидная форма изменяет запись в Post."""
-        NEW_TEXT_OF_POST = 'Измененный тестовый пост' 
+        NEW_TEXT_OF_POST = 'Измененный тестовый пост'
         form_data = {
             'text': NEW_TEXT_OF_POST,
             'group': PostFormTests.group.pk,

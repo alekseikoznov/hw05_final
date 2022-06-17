@@ -2,8 +2,6 @@ from django.test import TestCase, Client
 from django.contrib.auth import get_user_model
 from ..models import Post, Group
 from http import HTTPStatus
-from django.core.cache import cache
-from django.urls import reverse
 
 User = get_user_model()
 

@@ -182,7 +182,7 @@ class PostsViewsTests(TestCase):
     def test_cache_index_page(self):
         """Главная страница хранится в кэше 20 секунд."""
         TEXT_FOR_POST = 'Текст2.'
-        post =  Post.objects.create(
+        post = Post.objects.create(
             text=TEXT_FOR_POST,
             author=PostsViewsTests.user,
             group=PostsViewsTests.group,
@@ -201,8 +201,9 @@ class PostsViewsTests(TestCase):
     def test_auth_user_follow(self):
         """Пользователь может подписываться и отписываться."""
         follow = Follow.objects.create(
-                user=self.user_client,
-                author=PostsViewsTests.user)
+            user=self.user_client,
+            author=PostsViewsTests.user
+        )
         self.assertTrue(
             Follow.objects.filter(
                 user=self.user_client,
@@ -220,7 +221,8 @@ class PostsViewsTests(TestCase):
     def test_follow_on_yourself(self):
         """Пользователь не может подписываться на себя."""
         self.authorized_client.get(
-            reverse('posts:profile_follow', kwargs={'username': 'User_client'}))
+            reverse('posts:profile_follow',
+                    kwargs={'username': 'User_client'}))
         self.assertFalse(
             Follow.objects.filter(
                 user=self.user_client,
@@ -237,8 +239,9 @@ class PostsViewsTests(TestCase):
         """В ленту подписчика добавляются посты."""
         TEXT_FOR_POST = 'Текст2.'
         Follow.objects.create(
-                user=self.user_1,
-                author=PostsViewsTests.user)
+            user=self.user_1,
+            author=PostsViewsTests.user
+        )
         count_before_follower = self.count_pages_follow(self.authorized_user_1)
         count_before = self.count_pages_follow(self.authorized_client)
         Post.objects.create(
