@@ -71,6 +71,7 @@ def post_create(request):
     return render(request, template, {'form': form})
 
 
+@login_required
 def post_edit(request, post_id):
     post = get_object_or_404(Post, id=post_id)
     form = PostForm(
@@ -116,12 +117,8 @@ def follow_index(request):
 @login_required
 def profile_follow(request, username):
     author = get_object_or_404(User, username=username)
-    follow = Follow.objects.filter(
-        user=request.user,
-        author=author
-    ).exists()
-    if author != request.user and not follow:
-        Follow.objects.create(user=request.user, author=author)
+    if author != request.user:
+        Follow.objects.get_or_create(user=request.user, author=author)
     return redirect('posts:profile', username)
 
 

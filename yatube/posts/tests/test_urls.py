@@ -70,7 +70,7 @@ class PostURLTests(TestCase):
         response = self.guest_client.get('/posts/1/edit/')
         response_user = self.authorized_user_1.get('/posts/1/edit/')
         self.assertRedirects(
-            response, ('/posts/1/'))
+            response, ('/auth/login/?next=/posts/1/edit/'))
         self.assertRedirects(
             response_user, ('/posts/1/'))
 
