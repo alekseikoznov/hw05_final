@@ -18,11 +18,11 @@
 1. Клонировать репозиторий и перейти в него в командной строке:
 
 ```
-git clone 
+git clone git@github.com:alekseikoznov/yatube.git
 ```
 
 ```
-cd QRkot_spreadsheets
+cd yatube
 ```
 
 2. Cоздать и активировать виртуальное окружение:
