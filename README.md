@@ -53,7 +53,7 @@ python -m pip install --upgrade pip
 ```
 pip install -r requirements.txt
 ```
-4. В папке с файлом manage.py выполните миграции::
+4. В папке с файлом manage.py выполните миграции:
 
 ```
 python manage.py migrate
