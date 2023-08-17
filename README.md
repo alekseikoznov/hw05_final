@@ -1,15 +1,16 @@
 # Проект Yatube
 
-[![CI](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml/badge.svg?branch=master)](https://github.com/yandex-praktikum/hw05_final/actions/workflows/python-app.yml)
-[![Python](https://img.shields.io/badge/-Python-464646?style=flat-square&logo=Python)](https://www.python.org/)
-[![Django](https://img.shields.io/badge/-Django-464646?style=flat-square&logo=Django)](https://www.djangoproject.com/)
-
-
 ## Описание проекта:
 
 Проект "Yatube" представляет собой представляет социальную сеть для публикации личных дневников.
 
-Пользователи могут вести свои микроблоги и следить за интересными авторами.
+Пользователи могут вести свои микроблоги, подписываться на интересных авторов и комментировать их публикации.
+
+## Технологии проекта:
+
+- Python 3.7
+- Django 2.2
+- Pytest 6.2
 
 ## Установка:
 
@@ -28,7 +29,7 @@ cd yatube
 2. Cоздать и активировать виртуальное окружение:
 
 ```
-python3 -m venv venv
+python -m venv venv
 ```
 
 * Если у вас Linux/macOS
@@ -37,18 +38,28 @@ python3 -m venv venv
     source venv/bin/activate
     ```
 
-* Если у вас windows
+* Если у вас Windows
 
     ```
     source venv/scripts/activate
     ```
 
-Установить зависимости из файла requirements.txt:
+3. Установить зависимости из файла requirements.txt:
 
 ```
-python3 -m pip install --upgrade pip
+python -m pip install --upgrade pip
 ```
 
 ```
 pip install -r requirements.txt
+```
+4. В папке с файлом manage.py выполните миграции::
+
+```
+python manage.py migrate
+```
+5. В папке с файлом manage.py запустите локальный сервер:
+
+```
+python manage.py runserver
 ```
